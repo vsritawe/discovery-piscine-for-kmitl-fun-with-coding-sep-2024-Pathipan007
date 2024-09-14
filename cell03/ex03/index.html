@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TO DO List</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="todo.js" defer></script>
+    <style>
+        body {
+            text-align: center;
+            font-family: Arial, sans-serif;
+        }
+        #ft_list {
+            margin-top: 20px;
+        }
+        .todo-item {
+            margin: 5px 0;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            background-color: #f9f9f9;
+        }
+    </style>
+</head>
+<body>
+    <h1>TO DO List</h1>
+    <button id="New">New</button>
+    <div id="ft_list"></div>
+
+    <script>
+        $(document).ready(function() {
+            // Event handler for the "New" button
+            $('#New').click(function() {
+                // Prompt the user for a new TO DO item
+                var newItem = prompt('Enter a new TO DO item:');
+                if (newItem) {
+                    // Create a new TO DO item element
+                    var todoItem = $('<div></div>', {
+                        class: 'todo-item',
+                        text: newItem
+                    });
+
+                    // Append the new TO DO item to the list
+                    $('#ft_list').append(todoItem);
+                }
+            });
+
+            // Event delegation for deleting TO DO items
+            $('#ft_list').on('click', '.todo-item', function() {
+                $(this).remove();
+            });
+        });
+    </script>
+</body>
+</html>
